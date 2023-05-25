@@ -3,7 +3,7 @@ require_once 'BaseController.php';
 use App\controller\basecontroller;
 require_once __DIR__.'/../models/family.php';
 use App\Models\Family;
-class Familly extends basecontroller{
+class FamillyController extends basecontroller{
 
  public function index()
  {
@@ -11,6 +11,4 @@ class Familly extends basecontroller{
         $index->getall($this->conn); 
  }
 }
-
-
 ?>
