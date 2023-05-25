@@ -8,7 +8,7 @@ class Familly extends basecontroller{
  public function index()
  {
         $index= new  Family ; 
-        $index->getall($con); 
+        $index->getall($this->conn); 
  }
 }
 
