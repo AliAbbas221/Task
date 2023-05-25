@@ -2,7 +2,6 @@
 $host = "localhost";
 
 $dbname = "family";
-=======
 
 $dbname = "darrebni";
 
