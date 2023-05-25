@@ -1,9 +1,13 @@
 <?php
 $host = "localhost";
 
+$dbname = "family";
+=======
+
 $dbname = "darrebni";
 
 $dbname = "fmily";
+
 
 $username = "root";
 $password = "";
