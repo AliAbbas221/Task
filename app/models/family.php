@@ -7,6 +7,7 @@ require 'config/database.php';
 use mysqli;
 session_start();
 abstract class Model{
+    public $db;
     protected $id;
    public function getId(){
     return $this->id;
@@ -14,6 +15,7 @@ abstract class Model{
    public function setid($d){
     $this->id=$d;
    }
+ 
   
 //    abstract static function getuserbyid($con,$id);
 //    abstract function save($con);
@@ -22,7 +24,7 @@ class Family extends Model{
 
     protected $fname;
     protected $mname;
-    protected $lname;
+    protected $lname ,$phone , $status,$location;
     public function  getfname(){
         return $this->fname;
     }
@@ -41,7 +43,45 @@ class Family extends Model{
     public function setmname( String $m){
 $this->mname=$m;
     }
-   
-    // }
+    public function setphone( string $x)
+    {
+        $this->phone=$x; 
+    }
+    public function getphone(){
+        return $this->phone; 
+    }
+    public function setstatus(  string $x)
+    {
+        $this->status=$x; 
+    }
+    public function getstatus(){
+
+        return $this->status;
+    }
+    public function setlocation( string $x)
+    {
+        $this->location=$x; 
+    }
+    public function getlocation(){
+        return $this->location; 
+     }
+     public function getall($db)
+    {
+        $result="SELECT * FROM family ";
+        $s=$this->db->prepare($result);
+         $res= $s->execute();
+         $result=$s->fetchAll(PDO::FETCH_ASSOC);
+        $user =new Family();
+        $user->id=$result['id'];
+        $user->fname=$result['fname'];
+        $user->mname=$result['mname'];
+        $user->lname=$result['lname'];
+        $user-> phone=$result['phone']; 
+        $user->status=$result['status']; 
+        $user->location=$result['location'];
+        return $user;
+} 
+     
+
 }
 ?>
