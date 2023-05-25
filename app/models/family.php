@@ -3,7 +3,7 @@ declare (strict_types=1);
 namespace App\Models;
 use PDO;
 //include ('database.php');
-require 'config/database.php';
+require 'C:\xampp\htdocs\Task\config\database.php';
 use mysqli;
 session_start();
 abstract class Model{
@@ -15,10 +15,11 @@ abstract class Model{
     $this->id=$d;
    }
   
-//    abstract static function getuserbyid($con,$id);
-//    abstract function save($con);
+
 }
 class Family extends Model{
+
+    protected $searchterm;
 
     protected $fname;
     protected $mname;
@@ -39,9 +40,30 @@ class Family extends Model{
         $this->fname=$f;
     }
     public function setmname( String $m){
-$this->mname=$m;
+        $this->mname=$m;
+    }
+
+    public function  setsearchterm($chat){
+        $this->searchterm=$chat;
+    }
+    public function  getsearchterm(){
+        return $this->searchterm;
+    }
+
+
+    public function FamilySearch($searchterm){
+
+        
+        $sql = "SELECT * FROM family WHERE fname LIKE '%$searchterm%'";
+        $a=$this->$db->prepare($sql);
+        $a->execute();
+
+
+
+
+
     }
    
-    // }
+
 }
 ?>
