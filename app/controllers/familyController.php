@@ -4,6 +4,6 @@ use App\controller\basecontroller;
 require_once __DIR__.'/../models/family.php';
 use App\Models\Family;
 class FamillyController extends basecontroller{
-
+  
 }
 ?>

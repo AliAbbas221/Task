@@ -15,8 +15,6 @@ abstract class Model{
     $this->id=$d;
    }
   
-//    abstract static function getuserbyid($con,$id);
-//    abstract function save($con);
 }
 class Family extends Model{
 
