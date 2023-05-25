@@ -15,6 +15,7 @@
 				<td><?php echo $row['fname']; ?></td>
 				<td><?php echo $row['sname']; ?></td>
                 <td><?php echo $row['lname']; ?></td>
+                <h1>hi</h1>
                 
 
 			</tr>
