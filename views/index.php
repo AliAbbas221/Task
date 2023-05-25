@@ -15,7 +15,21 @@
 				<td><?php echo $row['fname']; ?></td>
 				<td><?php echo $row['sname']; ?></td>
                 <td><?php echo $row['lname']; ?></td>
-                <h1>hi</h1>
+				<td><?php echo $row['familycount']; ?></td>
+				<td><?php echo $row['phone']; ?></td>
+				<td><?php echo $row['status']; ?></td>
+				<form action="/addfamily/addfamily" <?php echo $row->getId()?> >
+					<input type="submit" name='addfamily' value='Add Family'>
+				</form>
+
+				<form action="/addfamily/editfamily" <?php echo $row->getId()?> >
+					<input type="submit" name='editfamily' value='Edit Family'>
+				</form>
+
+				<form action="/addfamily/deletefamily" <?php echo $row->getId()?> >
+					<input type="submit" name='deletefamily' value='Delete Family'>
+				</form>
+				
                 
 
 			</tr>
