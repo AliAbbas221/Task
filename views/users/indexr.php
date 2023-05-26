@@ -27,6 +27,9 @@
     <tbody>
         <?php foreach ($results as $result): ?>
             <tr>
+               <td><?php  echo 'true'?></td>
+                <td><?= $result->getfname(); ?></td>
+                <td><?= $result->getlname(); ?></td>
                
                 <td><?= $result->getfname() ?></td>
                 <td><?= $result->getlname() ?></td>
@@ -37,6 +40,7 @@
             </tr>
         <?php endforeach ?>
     </tbody>
+	<tfoot><?php  echo 'true'?></tfoot>
 </table>
 </body>
 </html>

@@ -3,17 +3,13 @@ require_once 'BaseController.php';
 use App\controller\basecontroller;
 require_once __DIR__.'/../models/family.php';
 use App\Models\Family;
-
-class Familly extends basecontroller{
-
-}
 class FamillyController extends basecontroller{
     public function index()
     {
             
            $results=Family::getall($this->conn);
-          // print_r($results);
-           require 'views/users/index.php';
+           extract(['results' => $results]);
+           require 'views/users/indexr.php';
     }
     public function addfamily(){
         $f1=new Family();
@@ -40,7 +36,7 @@ class FamillyController extends basecontroller{
 
         else{
             $re=Family::getfamilybyid($this->conn,$id);
-            require __DIR__.'/../../view/users/editfamily.php';
+            require __DIR__.'/../../views/users/editfamily.php';
 
         }
     }
