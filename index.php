@@ -1,29 +1,40 @@
 <?php
-require_once 'BaceController.php';
-require_once 'familyController.php';
+require_once __DIR__.'/app/controllers/BaseController.php';
+require_once __DIR__.'/app/controllers/familyController.php';
 use APP\controller\basecontroller;
-require 'config/database.php';
 use App\controller\familuController;
+require 'config/database.php';
 define('BATH_BASE','/darrebni6/');
-$new=$_SERVER['REQUEST_URI'];
-switch($new){
+$action=$_SERVER['REQUEST_URI'];
+switch($action){
 
     case BATH_BASE:
         $Ccontroller=new FamillyController($db);
         $Ccontroller->index();
-       
-    case (strpos($_SERVER['REQUEST_URI'], BATH_BASE.'addfamily/') === 0):
-        $id = substr($_SERVER['REQUEST_URI'], strlen(BATH_BASE . 'addfamily/'));
+       break;
+    case BATH_BASE.'addfamily':
         $Ccontroller1=new FamillyController($db);
-        $Ccontroller1->Savefamily($id);
+        $Ccontroller1->addfamily();
+        break;
     case (strpos($_SERVER['REQUEST_URI'], BATH_BASE.'editfamily/') === 0):
             $id = substr($_SERVER['REQUEST_URI'], strlen(BATH_BASE . 'editfamily/'));
             $Ccontroller2=new FamillyController($db);
-            $Ccontroller2->Savefamily($id);
+            $Ccontroller2->editfamily($id);
+            break;
     case (strpos($_SERVER['REQUEST_URI'], BATH_BASE.'deletefamily/') === 0):
                 $id = substr($_SERVER['REQUEST_URI'], strlen(BATH_BASE . 'deletefamily/'));
                 $Ccontroller3=new FamillyController($db);
                 $Ccontroller3->DeleteFamily($id);
+                break;
+    case (strpos($_SERVER['REQUEST_URI'], BATH_BASE.'searchfamily/') === 0):
+        $id = substr($_SERVER['REQUEST_URI'], strlen(BATH_BASE . 'searchfamily/'));
+        $Ccontroller5=new FamillyController($db);
+        $Ccontroller5->searchfamily($id);     
+        break;
+    default:
+    $Ccontroller7=new FamillyController($db);
+    $Ccontroller7->index();
+   break;
 }
 
 
