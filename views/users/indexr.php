@@ -27,14 +27,14 @@
     <tbody>
         <?php foreach ($results as $result): ?>
             <tr>
-               <td><?php  echo 'true'?></td>
+               <!-- <td><?php  echo 'true'?></td> -->
                 <td><?= $result->getfname(); ?></td>
                 <td><?= $result->getlname(); ?></td>
                
                 <td><?= $result->getfname() ?></td>
                 <td><?= $result->getlname() ?></td>
                 <td>
-                   <form method='POST' action='/darrebni5/buycourse/<?php echo $course->getId();?>'><button>Buy</button></form>
+                   <!-- <form method='POST' action='/darrebni5/buycourse/<?php echo $result->getId();?>'><button>Buy</button></form> -->
 
                 </td>
             </tr>

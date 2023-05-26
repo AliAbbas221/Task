@@ -102,8 +102,9 @@ $this->status=$s;
     $user4->setphone($row['phone']); 
     $user4->setstatus($row['status']); 
     $user4->setfamilycount($row['familycount']);
-    $user4->location=$row['location'];}
-    $families=$user4;
+    $user4->location=$row['location'];
+    $families[]=$user4;
+      }
     // set other properties of $user4 here
 }
     
