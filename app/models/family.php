@@ -97,6 +97,16 @@ class Family extends Model{
         return $user;
         ///sheeeet
 } 
+
+
+public function DeleteFamily($db){
+    $statement="DELETE FROM family WHERE id='$this->id'";
+    $exec=$db->prepare($statement);
+    $exec->execute();
+
+
+}
+
 public function FamilySearch($searchterm){
 
         
@@ -120,6 +130,7 @@ public function SaveFamily($db)
         
     }
 }
+
      
 
 
