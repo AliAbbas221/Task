@@ -127,10 +127,10 @@ public  function DeleteFamily($db){
 public function FamilySearch($db,$location){
 
         
-    $sql = "SELECT * FROM family WHERE location='$location'";
+    $sql = "SELECT * FROM family WHERE fname='$location'";
     $a=$db->prepare($sql);
     $a->execute();
-    $result=$a->fetch(PDO::FETCH_ASSOC);
+    $result=$a->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 
 }

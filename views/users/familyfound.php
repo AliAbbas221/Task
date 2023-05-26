@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html>
-<body>
-
 <head>
-	<title>Family founded</title>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	
 </head>
 <body>
-	<table>
-		<tr>
-			<th>Fname</th>
-			<th>Mname</th>
-            
-			<th>lname</th>
-			<th>familycount</th>
-            
-			<th>phone</th>
-			<th>status</th>
-            
-            
-		</tr>
-		<?php foreach ($results as $row): ?>
-			<tr>
-            <td> <input type="hidden" name='id' value='<?php echo $row['id']; ?>'></td>
-				<td><?php echo $row['fname']; ?></td>
-				<td><?php echo $row['sname']; ?></td>
-                <td><?php echo $row['lname']; ?></td>
-				<td><?php echo $row['familycount']; ?></td>
-				<td><?php echo $row['phone']; ?></td>
-				<td><?php echo $row['status']; ?></td>
-		</tr>
-		<?php endforeach; ?></table>
+	
+
+<h1>Families</h1>
+
+<nav>
+        
+    </nav>
+<table>
+    <thead>
+    <tr>
+            <th>Fname</th>
+            <th>Mname</th>
+            <th>Lname</th>
+			<th>Number</th>
+            <th>Status</th>
+            <th>Phone</th>
+            <th>Location</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($results as $result): ?>
+            <tr>
+              <td><? echo 'turesdkljnkl'?></td>
+                <td><?= $result->getfname(); ?></td>
+                <td><?= $result->getmname(); ?></td>
+                <td><?= $result->getlname(); ?></td>
+                <td><?= $result->getnumber(); ?></td>
+             
+                <td><?= $result->getstatus(); ?></td>
+                <td><?=$result->getphone(); ?></td>
+                <td><?= $result->getlocation(); ?></td>
+              
+
+               
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
 </body>
 </html>

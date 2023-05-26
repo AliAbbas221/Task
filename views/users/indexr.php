@@ -25,6 +25,9 @@
             <th>Phone</th>
             <th>Location</th>
             <form method="POST" action="addfamily"><button>Add Family</button></form>
+            <form method="POST" action="searchfamily">
+                <button>search Family</button>
+            </form>
         </tr>
     </thead>
     <tbody>

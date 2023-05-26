@@ -67,12 +67,11 @@ class FamillyController extends basecontroller{
     }
    }
    public function searchfamily(){
-    if($_SERVER['REQUEST_METHOD']==='POST'){
+    if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['fname'])){
         $f5=new Family();
-        $results=$f5->FamilySearch($this->conn,$_POST['choice']);
-        require 'views/users/familufound.php';
-   
-     
+        $results=$f5->FamilySearch($this->conn,$_POST['fname']);
+        extract(['results' => $results]);
+        require 'views/users/familyfound.php';
    }
    else{
     require __DIR__.'/../../views/users/searchinplace.php';

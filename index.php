@@ -26,10 +26,9 @@ switch($action){
                 $Ccontroller3=new FamillyController($db);
                 $Ccontroller3->DeleteFamily($id);
                 break;
-    case (strpos($_SERVER['REQUEST_URI'], BATH_BASE.'searchfamily/') === 0):
-        $id = substr($_SERVER['REQUEST_URI'], strlen(BATH_BASE . 'searchfamily/'));
+    case BATH_BASE.'searchfamily';
         $Ccontroller5=new FamillyController($db);
-        $Ccontroller5->searchfamily($id);     
+        $Ccontroller5->searchfamily();     
         break;
     default:
     $Ccontroller7=new FamillyController($db);
