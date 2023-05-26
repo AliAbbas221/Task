@@ -20,7 +20,7 @@
         <label>phone number</label>
         <input type="number" name="phone" value=<?= $re->getphone()?>><br>
         <label>status</label>
-        <input type="number" name="status" value=<?= $re->getstatus() ?>><br>
+        <input type="text" name="status" value=<?= $re->getstatus()?>><br>
         <label>Location</label>
         <input typoe="text" name="location" value=<?= $re->getlocation() ?>>
         <input type="submit" value="add">

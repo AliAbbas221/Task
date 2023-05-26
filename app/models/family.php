@@ -52,9 +52,7 @@ class Family extends Model{
     }
 
   
-    public function settatus($s){
-$this->status=$s;
-    }
+   
    
 
     public function setphone($x)
@@ -64,7 +62,7 @@ $this->status=$s;
     public function getphone(){
         return $this->phone; 
     }
-    public function setstatus(  string $x)
+    public function setstatus( $x)
     {
         $this->status=$x; 
     }
@@ -116,7 +114,12 @@ $this->status=$s;
 public  function DeleteFamily($db){
     $statement="DELETE FROM family WHERE id='$this->id'";
     $exec=$db->prepare($statement);
-    $exec->execute();
+   if( $exec->execute()){
+    return true;
+   }
+   else{
+    return false;
+   }
 
 
 }
@@ -139,7 +142,7 @@ public function SaveFamily($db)
         $s->execute();
     }
     else{
-        $q22="INSERT INTO family (fname,mname,lname,familycount,phone,status,location) VALUES('$this->fname','$this->mname','$this->lname','$this->familycount','$this->phone',,'$this->status','$this->location')";
+        $q22="INSERT INTO family (fname,mname,lname,familycount,phone,status,location) VALUES('$this->fname','$this->mname','$this->lname','$this->familycount','$this->phone','$this->status','$this->location')";
         $s=$db->prepare($q22);
         $s->execute();
         $this->id=$db->lastInsertId();

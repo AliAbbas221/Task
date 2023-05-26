@@ -12,22 +12,34 @@ class FamillyController extends basecontroller{
            require 'views/users/indexr.php';
     }
     public function addfamily(){
+        if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['fname'])){
         $f1=new Family();
+        $f1->setfname($_POST['fname']);
+        $f1->setmname($_POST['mname']);
+        $f1->setlname($_POST['lname']);
+        $f1->setstatus($_POST['status']);
+        $f1->setfamilycount($_POST['phone']);
+        $f1->setphone($_POST['number']);
+        $f1->setlocation($_POST['location']);
         $f1->SaveFamily($this->conn);
-        header('Location:'.BATH_BASE);
         
+        header('Location:'.BATH_BASE);
+        }
+        else{
+            require 'views/users/addfa.php';
+        }
 
     }
     public function editfamily($id){
-        if($_SERVER['REQUEST_METHOD']==='POST'){
+        if($_SERVER['REQUEST_METHOD']==='POST'&&isset($_POST['fname'])){
             $f2=Family::getfamilybyid($this->conn,$id);
-            
+            $f2->setid($id);
             $f2->setfname($_POST['fname']);
             $f2->setlname($_POST['lname']);
             $f2->setmname($_POST['mname']);
             $f2->setfamilycount($_POST['numberfamily']);
             $f2->setphone($_POST['phone']);
-            $f2->settatus($_POST['status']);
+            $f2->setstatus($_POST['status']);
             $f2->SaveFamily($this->conn);
             header('Location:'.BATH_BASE);
     
@@ -41,10 +53,15 @@ class FamillyController extends basecontroller{
         }
     }
     public function DeleteFamily($id){
+       // echo $id;
     $rr=Family::getfamilybyid($this->conn,$id);
-    $rr->DeleteFamily($this->conn);
+    $rt=$rr->DeleteFamily($this->conn);
+ if($rt)
+    {
     header('Location:'.BATH_BASE);
-
+    }else{
+        echo 'erro';
+    }
    }
    public function searchfamily(){
     if($_SERVER['REQUEST_METHOD']==='POST'){

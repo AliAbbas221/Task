@@ -16,12 +16,15 @@
     </nav>
 <table>
     <thead>
-        <tr>
+    <tr>
             <th>Fname</th>
             <th>Mname</th>
             <th>Lname</th>
-			<th></th>
-           
+			<th>Number</th>
+            <th>Status</th>
+            <th>Phone</th>
+            <th>Location</th>
+            <form method="POST" action="addfamily"><button>Add Family</button></form>
         </tr>
     </thead>
     <tbody>
@@ -29,18 +32,23 @@
             <tr>
                <!-- <td><?php  echo 'true'?></td> -->
                 <td><?= $result->getfname(); ?></td>
+                <td><?= $result->getmname(); ?></td>
                 <td><?= $result->getlname(); ?></td>
-               
-                <td><?= $result->getfname() ?></td>
-                <td><?= $result->getlname() ?></td>
-                <td>
-                   <!-- <form method='POST' action='/darrebni5/buycourse/<?php echo $result->getId();?>'><button>Buy</button></form> -->
+                <td><?= $result->getnumber(); ?></td>
+             
+                <td><?= $result->getstatus(); ?></td>
+                <td><?=$result->getphone(); ?></td>
+                <td><?= $result->getlocation(); ?></td>
+               <td> <form method="POST" action="editfamily/<?php echo $result->getId();?>"><button>Edit Family</button></form>
+               </td>
+               <td> <form method="POST" action="deletefamily/<?php echo $result->getId();?>"><button>Delte Family</button></form>
+               </td>
 
-                </td>
+               
             </tr>
         <?php endforeach ?>
     </tbody>
-	<tfoot><?php  echo 'true'?></tfoot>
+	<tfoot></tfoot>
 </table>
 </body>
 </html>
