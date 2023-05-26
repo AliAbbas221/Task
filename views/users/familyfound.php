@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
-	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>Page Title</title>
-	
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+   
 </head>
 <body>
-	
-
-<h1>Families</h1>
-
-<nav>
-        
-    </nav>
-<table>
-    <thead>
-    <tr>
-            <th>Fname</th>
-            <th>Mname</th>
-            <th>Lname</th>
-			<th>Number</th>
-            <th>Status</th>
-            <th>Phone</th>
-            <th>Location</th>
-          
+    <table>
+        <tr>
+            <td>Fname</td>
+            <td>Mname</td>
+            <td>Lname</td>
+            <td>phone</td>
+            <td>Family mymber</td>
+            <td>Location</td>
         </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($results as $result): ?>
-            <tr>
-              <td><? echo 'turesdkljnkl'?></td>
-                <td><?= $result->getfname(); ?></td>
-                <td><?= $result->getmname(); ?></td>
-                <td><?= $result->getlname(); ?></td>
-                <td><?= $result->getnumber(); ?></td>
-             
-                <td><?= $result->getstatus(); ?></td>
-                <td><?=$result->getphone(); ?></td>
-                <td><?= $result->getlocation(); ?></td>
-              
+        <tr>
+        
+<?php
 
-               
-            </tr>
-        <?php endforeach ?>
-    </tbody>
-</table>
-</body>
-</html>
+
+//print_r($results);
+foreach($results as $r =>$value): ?>
+    
+ <td><?= $value['fname']; ?></td>
+    <td><?= $value['mname']; ?></td>
+    <td><?= $value['lname']; ?></td>
+    <td><?= $value['phone']; ?></td>
+    <td><?= $value['familycount']; ?></td>
+    <td><?= $value['location']; ?></td>
+    
+    <?php endforeach ?>  
+    
+    <a href=" /darrebni6/">Home</a>
+        
+        </tr>
+    </table>
+    </body>
+    </html>
