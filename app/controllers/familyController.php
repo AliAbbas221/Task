@@ -9,9 +9,15 @@ class Familly extends basecontroller{
 }
 
 
-=======
-class FamillyController extends basecontroller{
 
-}
+class FamillyController extends basecontroller{
+    public function index()
+    {
+           $index= new  Family() ; 
+           $index->getall($this->conn); 
+    }
+   }
+   
+
 
 ?>
