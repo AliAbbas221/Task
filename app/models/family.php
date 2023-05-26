@@ -26,7 +26,7 @@ class Family extends Model{
 
     protected $fname;
     protected $mname;
-    protected $lname ,$phone , $status,$location;
+    protected $lname ,$phone , $status,$location , $familycount;
     public function  getfname(){
         return $this->fname;
     }
@@ -53,20 +53,6 @@ class Family extends Model{
         return $this->searchterm;
     }
 
-
-    public function FamilySearch($searchterm){
-
-        
-        $sql = "SELECT * FROM family WHERE fname LIKE '%$searchterm%'";
-        $a=$this->db->prepare($sql);
-        $a->execute();
-
-
-
-
-
-    }
-
     public function setphone( string $x)
     {
         $this->phone=$x; 
@@ -89,6 +75,13 @@ class Family extends Model{
     public function getlocation(){
         return $this->location; 
      }
+     public function setfamilycount( string $x){
+        $this->familycount=$x;
+     }
+     public function getfamilycount()
+     {
+        return $this->familycount; 
+     }
      public function getall($db)
     {
         $result="SELECT * FROM family ";
@@ -106,6 +99,40 @@ class Family extends Model{
         return $user;
         ///sheeeet
 } 
+
+
+public function DeleteFamily($db){
+    $statement="DELETE FROM family WHERE id='$this->id'";
+    $exec=$db->prepare($statement);
+    $exec->execute();
+
+
+}
+
+public function FamilySearch($searchterm){
+
+        
+    $sql = "SELECT * FROM family WHERE fname LIKE '%$searchterm%'";
+    $a=$this->db->prepare($sql);
+    $a->execute();
+
+}
+public function SaveFamily($db)
+{
+    if($this->id){
+        $q2="UPDATE family SET fname='$this->fname',mname='$this->mname',lname='$this->lname' , familycount='$this->familycount', phone='$this->phone' , status='$this->status', location='$this->location' WHERE id='$this->id'";
+        $s=$db->prepare($q2);
+        $s->execute();
+    }
+    else{
+        $q22="INSERT INTO family (fname,mname,lname,familycount,phone,status,location) VALUES('$this->fname','$this->mname','$this->lname','$this->familycount','$this->phone',,'$this->status','$this->location')";
+        $s=$db->prepare($q22);
+        $s->execute();
+        $this->id=$db->lastInsertId();
+        
+    }
+}
+
      
 
 

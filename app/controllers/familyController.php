@@ -7,9 +7,6 @@ use App\Models\Family;
 class Familly extends basecontroller{
 
 }
-
-
-
 class FamillyController extends basecontroller{
     public function index()
     {
