@@ -40,6 +40,7 @@ class FamillyController extends basecontroller{
             $f2->setfamilycount($_POST['numberfamily']);
             $f2->setphone($_POST['phone']);
             $f2->setstatus($_POST['status']);
+            $f2->setlocation($_POST['location']);
             $f2->SaveFamily($this->conn);
             header('Location:'.BATH_BASE);
     
@@ -54,8 +55,10 @@ class FamillyController extends basecontroller{
     }
     public function DeleteFamily($id){
        // echo $id;
-    $rr=Family::getfamilybyid($this->conn,$id);
-    $rt=$rr->DeleteFamily($this->conn);
+   // $rr=Family::getfamilybyid($this->conn,$id);
+   $r1=new Family();
+   $r1->setid($id);
+    $rt=$r1->DeleteFamily($this->conn);
  if($rt)
     {
     header('Location:'.BATH_BASE);

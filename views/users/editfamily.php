@@ -21,9 +21,15 @@
         <input type="number" name="phone" value=<?= $re->getphone()?>><br>
         <label>status</label>
         <input type="text" name="status" value=<?= $re->getstatus()?>><br>
-        <label>Location</label>
-        <input typoe="text" name="location" value=<?= $re->getlocation() ?>>
-        <input type="submit" value="add">
+        <label for="location">Location:</label>
+  <select name="location" id="location" value=<?= $re->getlocation()?>>
+    <option value="North">North</option>
+    <option value="East">East</option>
+    <option value="West">West</option>
+    <option value="South">South</option>
+  </select>
+
+        <input type="submit" value="Edit">
 
     </form>
 </center>
