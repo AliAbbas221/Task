@@ -79,4 +79,17 @@ class User extends Model {
         $stmt = mysqli_query($conn, $query);
        
     }
+
+
+public function login($db){
+    $query="SELECT * FROM users WHERE email='$this->email' AND password='$this->password'";
+    $exec=$db->prepare($query);
+if( $exec->execute()){
+return true;
+}
+else{
+return false;
+}
+    
+    
 }
