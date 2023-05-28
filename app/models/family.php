@@ -151,7 +151,8 @@ public function SaveFamily($db)
    
 }
 
-public static function getfamilybyid($db,$id){
+public static function getfamilybyid($db,$id)
+{
         $query="SELECT * FROM family WHERE id='$id'";
         $s=$db->prepare($query);
         $s->execute();
@@ -168,6 +169,8 @@ public static function getfamilybyid($db,$id){
         
 
 } 
+
+
 
 //$searchterm;
 

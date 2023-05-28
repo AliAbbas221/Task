@@ -6,7 +6,12 @@ class basecontroller{
     public function __construct($conn){
         $this->conn=$conn;
     }
-   
+    public static function test($value){
+      $result1=trim($value);
+        $result2=stripcslashes($result1);
+      $result3=htmlspecialchars($result2);
+      return $result3;
+    }
    public function testName($name){
     if(empty($_POST['name'])){
       
