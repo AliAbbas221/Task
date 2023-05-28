@@ -9,7 +9,7 @@ class FamillyController extends basecontroller{
             
            $results=Family::getall($this->conn);
            extract(['results' => $results]);
-           require 'views/users/indexr.php';
+           require 'views/families/indexr.php';
     }
     public function addfamily(){
         if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['fname'])){
@@ -26,7 +26,7 @@ class FamillyController extends basecontroller{
         header('Location:'.BATH_BASE);
         }
         else{
-            require 'views/users/addfa.php';
+            require 'views/families/addfa.php';
         }
 
     }
@@ -49,7 +49,7 @@ class FamillyController extends basecontroller{
 
         else{
             $re=Family::getfamilybyid($this->conn,$id);
-            require __DIR__.'/../../views/users/editfamily.php';
+            require __DIR__.'/../../views/families/editfamily.php';
 
         }
     }
@@ -71,7 +71,7 @@ class FamillyController extends basecontroller{
         $f5=new Family();
         $results=$f5->FamilySearch($this->conn,$_POST['fname']);
         extract(['results' => $results]);
-        require 'views/users/familyfound.php';
+        require 'views/families/familyfound.php';
    }
    else{
     require __DIR__.'/../../views/users/searchinplace.php';
