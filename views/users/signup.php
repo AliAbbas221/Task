@@ -1,5 +1,5 @@
 <h1>Create User</h1>
-<form method="POST" action="?action=create_user">
+<form method="POST" action="">
     <div>
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">

@@ -17,39 +17,34 @@
 <table>
     <thead>
     <tr>
+           <th>id </th>
             <th>Fname</th>
             <th>Mname</th>
             <th>Lname</th>
-			<th>Number</th>
+			<th>count family</th>
             <th>Status</th>
             <th>Phone</th>
             <th>Location</th>
-            <form method="POST" action="addfamily"><button>Add Family</button></form>
-            <form method="POST" action="searchfamily">
-                <button>search Family</button>
-            </form>
+            <th>Email</th>
+            <button>  <a href="addfamily"> add family</a></button>
+            <button>  <a href="searchfamily"> search family</a></button>
+                
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($results as $result): ?>
-            <tr>
-               <!-- <td><?php  echo 'true'?></td> -->
-                <td><?= $result->getfname(); ?></td>
-                <td><?= $result->getmname(); ?></td>
-                <td><?= $result->getlname(); ?></td>
-                <td><?= $result->getnumber(); ?></td>
-             
-                <td><?= $result->getstatus(); ?></td>
-                <td><?=$result->getphone(); ?></td>
-                <td><?= $result->getlocation(); ?></td>
-               <td> <form method="POST" action="editfamily/<?php echo $result->getId();?>"><button>Edit Family</button></form>
-               </td>
-               <td> <form method="POST" action="deletefamily/<?php echo $result->getId();?>"><button>Delte Family</button></form>
-               </td>
+    <?php foreach ($results as $result) { ?>
+    <tr>
+        <td><?php echo $result->getid(); ?></td>
+        <td><?php echo $result->getfname(); ?></td>
+        <td><?php echo $result->getmname(); ?></td>
+        <td><?php echo $result->getlname(); ?></td>
+        <td><?php echo $result->getfamilycount(); ?></td>
 
-               
-            </tr>
-        <?php endforeach ?>
+        <td><?php echo $result->getphone(); ?></td>
+        <td><?php echo $result->getstatus(); ?></td>
+        <td><?php echo $result->getlocation(); ?></td>
+    </tr>
+<?php } ?>
     </tbody>
 	<tfoot></tfoot>
 </table>

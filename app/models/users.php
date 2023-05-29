@@ -1,17 +1,24 @@
 <?php
+declare (strict_types=1);
 namespace App\Models;
+//require __DIR__ . "/../../config/connection.php";
+require_once __DIR__ . '/../../config/database.php'; 
+use App\database\Connection;
 
-session_start(); 
+session_start();
 
+$connections=new Connection();
+  $db=$connections->getconnection();
 class User extends Model {
     private $name;
     private $email, $password;
+    
 
     public function getName() {
         return $this->name;
     }
 
-    public function setName( string $name) {
+    public function setName(String $name) {
         $this->name = $name;
     }
 
@@ -19,8 +26,8 @@ class User extends Model {
         return $this->email;
     }
 
-    public function setEmail($password) {
-        $this->password = $password;
+    public function setEmail($email) {
+        $this->email = $email;
     }
     public function getpassword() {
         return $this->password;
@@ -35,7 +42,7 @@ class User extends Model {
         $s=$db->prepare($query);
         $s->execute();
         $users = array();
-        while ($row = $s->fetchAll(PDO::FETCH_ASSOC)) {
+        while ($row = $s->fetchObject()) {
             $user = new User();
             $user->id = $row['id'];
             $user->setName($row['name']);
@@ -45,12 +52,30 @@ class User extends Model {
         }
         return $users;
     }
+    public  function testuser($db){
+        // echo $this->email . "<br>" . $this->password ; 
+        $er="SELECT * FROM users WHERE email='$this->email' AND password='$this->password'";
+        //$s=mysqli_query($con,$er);
+       $s= $db->prepare($er);
+       $s->execute();
+        
+          
+       if ($s->rowCount() > 0) {
+          $row = $s->fetchObject();
+          return $row;
+      }
+        else{
+         $s=0;
+        }
+       
+      
+      }   
 
     public static function getUserById($db, $id) {
         $query = "SELECT * FROM users WHERE id = $id";
         $s=$db->prepare($query);
         $s->execute();;
-        $row = $s->fetchAll(PDO::FETCH_ASSOC);
+        $row = $s->fetchObject();
         $user = new User();
         $user->id = $row['id'];
         $user->setName($row['name']);
@@ -63,20 +88,36 @@ class User extends Model {
     {
         if ($this->id) {
          
-            $sesult ="SELECT * FROM users WHERE id ='$this->id' ";
+            $sesult ="SELECT * FROM users WHERE id =$this->id ";
             $s=$db->prepare($sesult);
         $s->execute(); 
-        } else {
+        } 
+        else {
             $query = "INSERT INTO users (name, email , password) VALUES ('$this->name','$this->email','$this->password')";
-            $stmt = mysqli_query($db, $query);
+            $st=$db->prepare($query);
+            $st->execute();
             
-            $this->id = mysqli_insert_id($db);
+            $this->id = $db->lastInsertId();
         }
     }
 
     public function delete($conn) {
         $query = "DELETE FROM users WHERE id = '$this->id' ";
-        $stmt = mysqli_query($conn, $query);
+        $stmt = $conn->prepare( $query);
+        $stmt->execute();
        
     }
+
+
+public function login($db){
+    $query="SELECT * FROM users WHERE email='$this->email' AND password='$this->password'";
+    $exec=$db->prepare($query);
+if( $exec->execute()){
+return true;
 }
+else{
+return false;
+}
+    
+    
+}}

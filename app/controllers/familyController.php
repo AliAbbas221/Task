@@ -2,46 +2,53 @@
 require_once 'BaseController.php';
 use App\controller\basecontroller;
 require_once __DIR__.'/../models/family.php';
+//require_once "database.php";
 use App\Models\Family;
 class FamillyController extends basecontroller{
+    
     public function index()
     {
-            
+        if (isset($_SESSION['email'])) {
            $results=Family::getall($this->conn);
            extract(['results' => $results]);
            require 'views/families/indexr.php';
+        }
+        else {
+            header('Location:/Task/login');
+
+        }
     }
     public function addfamily(){
-        if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['fname'])){
-        $f1=new Family();
-        $f1->setfname($_POST['fname']);
-        $f1->setmname($_POST['mname']);
-        $f1->setlname($_POST['lname']);
-        $f1->setstatus($_POST['status']);
-        $f1->setfamilycount($_POST['phone']);
-        $f1->setphone($_POST['number']);
-        $f1->setlocation($_POST['location']);
-        $f1->SaveFamily($this->conn);
-        
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+        $family=new Family();
+        $family->setfname($_POST['fname']);
+            $family->setmname($_POST['mname']);
+            $family->setlname($_POST['lname']);
+            $family->setfamilycount($_POST['familycount']);
+            $family->setphone($_POST['phone']);
+            $family->setstatus($_POST['status']);
+            $family->setlocation($_POST['location']);
+        $family->SaveFamily($this->conn);
         header('Location:'.BATH_BASE);
         }
         else{
+            echo "rong"; 
             require 'views/families/addfa.php';
         }
 
     }
     public function editfamily($id){
         if($_SERVER['REQUEST_METHOD']==='POST'&&isset($_POST['fname'])){
-            $f2=Family::getfamilybyid($this->conn,$id);
-            $f2->setid($id);
-            $f2->setfname($_POST['fname']);
-            $f2->setlname($_POST['lname']);
-            $f2->setmname($_POST['mname']);
-            $f2->setfamilycount($_POST['numberfamily']);
-            $f2->setphone($_POST['phone']);
-            $f2->setstatus($_POST['status']);
-            $f2->setlocation($_POST['location']);
-            $f2->SaveFamily($this->conn);
+            $family=Family::getfamilybyid($this->conn,$id);
+            $family->setid($id);
+            $family->setfname($_POST['fname']);
+            $family->setmname($_POST['mname']);
+            $family->setlname($_POST['lname']);
+            $family->setfamilycount($_POST['familycount']);
+            $family->setphone($_POST['phone']);
+            $family->setstatus($_POST['status']);
+            $family->setlocation($_POST['location']);
+            $family->SaveFamily($this->conn);
             header('Location:'.BATH_BASE);
     
         }
@@ -67,14 +74,14 @@ class FamillyController extends basecontroller{
     }
    }
    public function searchfamily(){
-    if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['fname'])){
+    if($_SERVER['REQUEST_METHOD']==='POST'){
         $f5=new Family();
-        $results=$f5->FamilySearch($this->conn,$_POST['fname']);
+        $results=$f5->FamilySearch($this->conn,$_POST['location']);
         extract(['results' => $results]);
         require 'views/families/familyfound.php';
    }
    else{
-    require __DIR__.'/../../views/users/searchinplace.php';
+    require 'views/families/searchinplace.php';
    }
 }}
 

@@ -15,7 +15,7 @@
         <input type="text" name="fname" placeholder="Enter Your  first Name">
         <input type="text" name="mname" placeholder="Enter Your   mudel Name">
         <input type="text" name="lname" placeholder="Enter Your   lasr Name">
-        <input type="text" name="number" placeholder="Enter Your   family number">
+        <input type="text" name="familycount" placeholder="Enter Your   family number">
         <input type="number" name="phone" placeholder="Enter Your  number ">
         <input type="text" name="status" placeholder="emploee or no "><br>
         <label for="location">Location:</label>

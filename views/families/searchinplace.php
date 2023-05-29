@@ -12,7 +12,7 @@
 
         <form method="POST" action="">
         <label for="choice">Fname</label>
-        <input type='text' name='fname' >
+        <input type='text' name='location' >
           <button>Searhc</button>
         </select>
 
