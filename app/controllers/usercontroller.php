@@ -47,24 +47,6 @@ class UserController extends basecontroller {
     }
    
 
-
-
-public function LoginController() {
-    if (isset($_POST['submit'])) {
-        $user = new User();
-        $user->setEmail($_POST['email']);
-        $user->setPassword($_POST['password']);
-        if ($user->login()) {
-            $_SESSION['user_id'] = $user->getId();
-            header('Location: ');
-            exit();
-        } else {
-            echo "Invalid email or password";
-            include 'views/users/login.php';
-        }
-    } else {
-        include 'views/users/login.php';
-    }
 }
 //PUT FOR INDEX ACTION
 
